@@ -51,10 +51,11 @@
 #error Please put header file vectori256.h before vectorf256.h
 #endif
 
+#include "instrset.h"
 
 #if INSTRSET < 8   // AVX2 required
 #error Wrong instruction set for vectori256.h, AVX2 required or use vectori256e.h
-#endif
+#else
 
 #include "vectori128.h"
 
@@ -5642,5 +5643,7 @@ static inline Vec4qb to_Vec4qb(uint8_t x);
 #ifdef VCL_NAMESPACE
 }
 #endif
+
+#endif // INSTRSET < 8
 
 #endif // VECTORI256_H
